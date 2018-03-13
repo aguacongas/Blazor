@@ -15,8 +15,7 @@ namespace Microsoft.AspNetCore.Blazor.Razor
                 throw new ArgumentNullException(nameof(attribute));
             }
 
-            var key = ComponentTagHelperDescriptorProvider.DelegateSignatureMetadata;
-            return attribute.Metadata.TryGetValue(key, out var value);
+            return attribute.Metadata.TryGetValue(BlazorMetadata.Component.DelegateSignatureKey, out var value);
         }
 
         public static string GetDelegateSignature(this BoundAttributeDescriptor attribute)
@@ -25,9 +24,8 @@ namespace Microsoft.AspNetCore.Blazor.Razor
             {
                 throw new ArgumentNullException(nameof(attribute));
             }
-
-            var key = ComponentTagHelperDescriptorProvider.DelegateSignatureMetadata;
-            attribute.Metadata.TryGetValue(key, out var value);
+            
+            attribute.Metadata.TryGetValue(BlazorMetadata.Component.DelegateSignatureKey, out var value);
             return value;
         }
     }

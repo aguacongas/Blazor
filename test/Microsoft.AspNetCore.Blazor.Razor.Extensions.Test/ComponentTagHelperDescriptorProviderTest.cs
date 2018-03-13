@@ -77,8 +77,7 @@ namespace Test
             // here and then ignoring them.
             Assert.Empty(component.Diagnostics);
             Assert.False(component.HasErrors);
-            Assert.Equal(ComponentTagHelperDescriptorProvider.ComponentTagHelperKind, component.Kind);
-            Assert.Equal("Blazor.Component-0.1", component.Kind);
+            Assert.Equal(BlazorMetadata.Component.TagHelperKind, component.Kind);
             Assert.False(component.IsDefaultKind());
             Assert.False(component.KindUsesDefaultTagHelperRuntime());
 
