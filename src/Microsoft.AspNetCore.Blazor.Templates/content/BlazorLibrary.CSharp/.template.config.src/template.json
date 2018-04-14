@@ -3,19 +3,19 @@
   "classifications": [
     "Web",
     "Blazor",
-    "Standalone"
+    "Library"
   ],
-  "groupIdentity": "Microsoft.Web.Blazor.Standalone",
-  "identity": "Microsoft.Web.Blazor.Standalone.CSharp",
-  "name": "Blazor (standalone)",
+  "groupIdentity": "Microsoft.Web.Blazor.Library",
+  "identity": "Microsoft.Web.Blazor.Library.CSharp",
+  "name": "Blazor Library",
   "preferNameDirectory": true,
   "primaryOutputs": [
     {
-      "path": "BlazorStandalone.CSharp.csproj"
+      "path": "BlazorLibrary.CSharp.csproj"
     }
   ],
-  "shortName": "blazor",
-  "sourceName": "BlazorStandalone.CSharp",
+  "shortName": "blazorlib",
+  "sourceName": "BlazorLibrary.CSharp",
   "sources": [
     {
       "source": "./",
@@ -34,32 +34,31 @@
         {
           "choice": "netcoreapp2.0",
           "description": "Target netcoreapp2.0"
+        },
+        {
+          "choice": "netcoreapp2.1",
+          "description": "Target netcoreapp2.1"
         }
       ],
-      "replaces": "netcoreapp2.0",
-      "defaultValue": "netcoreapp2.0"
+      "replaces": "netcoreapp2.1",
+      "defaultValue": "netcoreapp2.1"
     },
     "HostIdentifier": {
       "type": "bind",
       "binding": "HostIdentifier"
     },
-    "HttpPort": {
+    "IncludeCustomRestoreSourcesSymbol": {
       "type": "parameter",
-      "datatype": "integer",
-      "description": "Port number to use for the HTTP endpoint in launchSettings.json."
+      "datatype": "bool",
+      "description": "If set, includes restore sources for the Blazor MyGet feed.",
+      "defaultValue": "${IncludeCustomRestoreSources}"
     },
-    "HttpPortGenerated": {
-      "type": "generated",
-      "generator": "port"
-    },
-    "HttpPortReplacer": {
-      "type": "generated",
-      "generator": "coalesce",
-      "parameters": {
-        "sourceVariableName": "HttpPort",
-        "fallbackVariableName": "HttpPortGenerated"
-      },
-      "replaces": "61501"
+    "TemplateBlazorVersionSymbol": {
+      "type": "parameter",
+      "datatype": "string",
+      "description": "Specifies which version of Blazor packages to use.",
+      "replaces": "$(TemplateBlazorPackageVersion)",
+      "defaultValue": "${TemplateBlazorVersion}"
     },
     "skipRestore": {
       "type": "parameter",
